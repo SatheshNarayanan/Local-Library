@@ -34,7 +34,10 @@ app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter);
 
 app.get("/",(req,res) => {
-    res.status(200).send("Welocme to our Library")
+    res.status(200).render("homes.hbs", {
+        layout: "main.hbs",
+        title: "Home",
+      });
 })
 
 app.listen( process.env.PORT || 3000, () => {

@@ -1,0 +1,34 @@
+ <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                 {{Sidebar}}
+                <ul class="sidebar-nav">
+                    <li><a href="/catalog">Home</a></li>
+                    <li><a href="/catalog/books">All Books</a></li>
+                    <li><a href="/catalog/authors">All Authors</a></li>
+                    <li><a href="/catalog/genres">All genres</a></li>
+                    <li><a href="/catalog/bookinstances">All book-instances</a></li>
+                    <li><hr></li>
+                    <li><a href="/catalog/author/create">Create new author</a></li>
+                    <li><a href="/catalog/genre/create">Create new genre</a></li>
+                    <li><a href="/catalog/book/create">Create new book</a></li>
+                    <li><a href="/catalog/bookinstance/create">Create new book instance</a></li>
+                </ul>
+            </div>
+             <div class="col-sm-10">
+                <h1>{{title}}</h1>
+<p>Welcome to {{title}}, a very basic Express website developed as a tutorial example on the Mozilla Developer Network.
+</p>
+
+<h1>{{contents}}</h1>
+<p>The library has the following record counts:</p>
+<ul>
+    <li> <b>Books:</b> {{data.book_count}}</li>
+    <li> <b>Copies:</b> {{data.book_instance_count}}</li>
+    <li> <b>Copies available:</b> {{data.book_instance_available_count}}</li>
+    <li> <b>Authors:</b> {{data.author_count}}</li>
+    <li> <b>Genres:</b> {{data.genre_count}}</li>
+</ul>
+             </div>
+        </div>
+    </div>
