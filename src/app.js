@@ -7,6 +7,9 @@ const express = require('express');
 const expressHBS = require("express-handlebars");
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const catalogRouter = require('./routes/catalog')
 const app = express();
 
 const hbs = expressHBS.create({
@@ -24,6 +27,12 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended : true }))
 
+
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter);
+
 app.get("/",(req,res) => {
     res.status(200).send("Welocme to our Library")
 })
@@ -31,3 +40,6 @@ app.get("/",(req,res) => {
 app.listen( process.env.PORT || 3000, () => {
     console.log("Im still running..!!")
 })
+
+
+

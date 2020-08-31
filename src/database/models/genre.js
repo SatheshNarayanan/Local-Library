@@ -6,7 +6,7 @@ const GenreSchema = new Schema({
     name: {
         type: String, 
         required: true, 
-        enum: ['Fiction', 'Non-Fiction', 'Romance', 'Military History','Comedy','Horror','Action-Adventure'], 
+        enum: ['Fiction', 'Non-Fiction', 'Romance', 'Military History','Comedy','French Poetry','Action-Adventure','Fantasy','Science Fiction',], 
         minlength: 3,
         maxlength: 100
     }

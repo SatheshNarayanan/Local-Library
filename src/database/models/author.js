@@ -25,6 +25,14 @@ const AuthorSchema = new Schema({
   AuthorSchema
   .virtual("lifespan")
   .get(function() {
+      if( !this.date_of_death)
+      {
+        this.date_of_death = Date.now()
+      }
+      if( !this.date_of_birth)
+      {
+        this.date_of_birth = Date.now()
+      }
       return (this.date_of_death.getYear() - this.date_of_birth.getYear()).toString()
   })
 

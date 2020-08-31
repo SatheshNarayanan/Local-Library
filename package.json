@@ -4,8 +4,8 @@
   "description": "A Local Library App with Express Mongoose and handlebars.",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "test": "nodemon src/app.js",
+    "start": "node src/app.js"
   },
   "keywords": [
     "Express.js",
