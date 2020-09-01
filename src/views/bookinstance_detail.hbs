@@ -1,0 +1,47 @@
+ <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                 {{Sidebar}}
+                <ul class="sidebar-nav">
+                    <li><a href="/catalog">Home</a></li>
+                    <li><a href="/catalog/books">All Books</a></li>
+                    <li><a href="/catalog/authors">All Authors</a></li>
+                    <li><a href="/catalog/genres">All genres</a></li>
+                    <li><a href="/catalog/bookinstances">All book-instances</a></li>
+                    <li><hr></li>
+                    <li><a href="/catalog/author/create">Create new author</a></li>
+                    <li><a href="/catalog/genre/create">Create new genre</a></li>
+                    <li><a href="/catalog/book/create">Create new book</a></li>
+                    <li><a href="/catalog/bookinstance/create">Create new book instance</a></li>
+                </ul>
+            </div>
+             <div class="col-sm-10">
+                  {{#each bookinstance}}
+                <h1> ID : {{this.id}}</h1>
+                <p><b>Title : </b>
+                <a href="{{this.links}}">{{this.title}}</a></p>
+
+                 <p><b>Imprint : </b>
+                {{this.imprint}}</p>
+                <p><b>Status :</b>
+                <span class={{#if (ifEquality this.status 'Available')}}
+                            text-success
+                            {{else}}
+                                {{#if (ifEquality this.status "Maintenance")}}
+                                text-danger
+                                {{else}}
+                                text-warning
+                                {{/if}}
+                            {{/if}}
+                            > {{this.status}}</span>
+                </p>
+                    {{#if (ifNotEquality this.status 'Available')}}
+                      <p><b>Due back : </b>
+                    {{this.due_back}}</p>
+                    {{/if}}
+                 {{/each}}
+         
+
+             </div>
+        </div>
+    </div>

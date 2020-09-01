@@ -1,0 +1,64 @@
+ <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                 {{Sidebar}}
+                <ul class="sidebar-nav">
+                    <li><a href="/catalog">Home</a></li>
+                    <li><a href="/catalog/books">All Books</a></li>
+                    <li><a href="/catalog/authors">All Authors</a></li>
+                    <li><a href="/catalog/genres">All genres</a></li>
+                    <li><a href="/catalog/bookinstances">All book-instances</a></li>
+                    <li><hr></li>
+                    <li><a href="/catalog/author/create">Create new author</a></li>
+                    <li><a href="/catalog/genre/create">Create new genre</a></li>
+                    <li><a href="/catalog/book/create">Create new book</a></li>
+                    <li><a href="/catalog/bookinstance/create">Create new book instance</a></li>
+                </ul>
+            </div>
+             <div class="col-sm-10">
+                 {{#each book}}
+                <h1>Title : {{this.title}}</h1>
+                <p> <b>
+                    Author : 
+                </b><a href="{{this.authorUrl}}">{{this.authorName}}</a></p>
+                <p> <b>
+                    Summary : 
+                </b>{{this.summary}}</p>
+                 <p> <b>
+                    ISBN : 
+                </b>{{this.isbn}}</p>
+                 <p> <b>
+                    Genre : 
+                </b> {{#each this.genre}}
+                    <a href="{{this.url}}">{{this.name}}</a>
+                    {{/each}}
+                </p>
+                {{/each}}
+            
+            <div style='margin-left:20px;margin-top:20px'>
+                <h4>Copies</h4>
+                {{#each book_instances}}
+                    <hr>
+                    <p class={{#if (ifEquality this.status "Available")}}
+                        text-success
+                        {{else}}
+                            {{#if (ifEquality this.status 'Maintenance') }}
+                                text-danger
+                            {{else}}
+                                text-warning
+                            {{/if}}
+                        {{/if}}
+                    >
+                        {{this.status}}
+                    </p>
+                    <p> <b>Imprint:</b> {{this.imprint}}</p>
+                    {{#if (ifNotEquality this.status "Available")}}
+                        <p><b>Due back:</b> {{this.due_back_formatted}}</p>
+                    {{/if}}
+                    <p><b>Id :</b> {{this.id}}</p>
+                {{/each}}
+            </div>
+            </div>
+             </div>
+        </div>
+    </div>

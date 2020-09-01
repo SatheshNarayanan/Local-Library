@@ -10,12 +10,17 @@ const cookieParser = require('cookie-parser');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog')
+const { ifEquality , ifNotEquality}  = require("./views/helpers/ifEquality")
 const app = express();
 
 const hbs = expressHBS.create({
     extname : ".hbs",
     layoutsDir : path.join(__dirname,"./views/layouts"),
-    partialsDir : path.join(__dirname, "./views/partials") 
+    partialsDir : path.join(__dirname, "./views/partials"),
+    helpers: {
+        ifEquality,
+        ifNotEquality
+      }
 })
 
 app.engine(".hbs",hbs.engine);
