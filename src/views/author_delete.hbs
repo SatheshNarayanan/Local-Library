@@ -1,0 +1,51 @@
+ <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                 {{Sidebar}}
+                <ul class="sidebar-nav">
+                    <li><a href="/catalog">Home</a></li>
+                    <li><a href="/catalog/books">All Books</a></li>
+                    <li><a href="/catalog/authors">All Authors</a></li>
+                    <li><a href="/catalog/genres">All genres</a></li>
+                    <li><a href="/catalog/bookinstances">All book-instances</a></li>
+                    <li><hr></li>
+                    <li><a href="/catalog/author/create">Create new author</a></li>
+                    <li><a href="/catalog/genre/create">Create new genre</a></li>
+                    <li><a href="/catalog/book/create">Create new book</a></li>
+                    <li><a href="/catalog/bookinstance/create">Create new book instance</a></li>
+                </ul>
+            </div>
+             <div class="col-sm-10">
+                 {{#each author}}
+                <h1> {{./title}} : {{this.name}}</h1>
+                <p>{{this.lifespan}}</p>
+                {{#if authors_books}}
+                <p><b>Delete the following books before attempting to delete this author.</b></p>
+                <div style='margin-left:20px;margin-top:20px'>
+                    <h4>Books</h4>
+                    <dl>
+                        {{#each author_books}}
+                            <dt>
+                                <a href="{{this.url}}">{{this.title}}</a>
+                            </dt> {{this.summary}}
+                        {{/each}}
+                    </dl>
+                </div>
+                {{else}}
+                <p>Do you really want to delete this Author?</p>
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <input type="hidden" name="authorid" id="authorid" required='true' value={{this.id}}>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Delete</button>
+                </form>
+                {{/if}}
+
+                <hr>
+                <p>
+                    <a href="{{this.url}}/delete">Delete author</a>
+                </p>
+                {{/each}}
+             </div>
+        </div>
+    </div>
